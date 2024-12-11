@@ -1,16 +1,15 @@
-
 @import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap");
 
 * {
-margin: 0;
-padding: 0;
-font-family: "Agdasima", sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: "Agdasima", sans-serif;
 }
 
 :root {
     --sidebar-bg: #2f323a;
-    --sidebar-width: 100px;
-    --sidebar-width-active: 150px;
+    --sidebar-width: 20px;
+    --sidebar-width-active: 100px;
     --text-color: #fff;
     --menu-item-color: rgb(188, 186, 186);
     --menu-item-hover-bg: rgb(117, 109, 109);
@@ -119,22 +118,30 @@ body {
 .toggle-menu {
     position: absolute;
     top: 10px;
-    right: -20px;
+    right: -15px;
     background-color: var(--sidebar-bg);
     border: 1px solid var(--menu-item-hover-bg);
     color: var(--text-color);
-    padding: 10px 15px;
-    border-radius: 5px;
+    padding: 5px 10px;
+    border-radius: 3px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 0.8em; 
 }
+
 
 .content {
     flex-grow: 1;
     padding: 20px;
     overflow-y: auto;
+    margin-left: var(--sidebar-width); /* Ensure content does not overlap with sidebar */
+    transition: margin-left 0.3s ease; /* Smooth transition when sidebar width changes */
+}
+
+.sidebar.active + .content {
+    margin-left: var(--sidebar-width-active); /* Adjust content when sidebar is active */
 }
 
 [data-tooltip] {
@@ -173,7 +180,7 @@ body {
 .sidebar:not(.active) [data-tooltip]:hover::before, .sidebar:not(.active) [data-tooltip]:hover::after {
     opacity: 1;
 }
-    
+
 .tree {
     display: flex;
     justify-content: center;
@@ -188,8 +195,8 @@ body {
     flex-direction: column;
     align-items: stretch;
     gap: 20px;
-  }
-  
+}
+
 .card {
     border: 1px solid #ccc;
     border-radius: 10px;
@@ -220,3 +227,103 @@ body {
     font-style: italic;
 }
 
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: fixed;
+        width: var(--sidebar-width);
+        height: 100%;
+        z-index: 10;
+        transition: all 0.3s ease;
+    }
+
+    .sidebar.active {
+        width: var(--sidebar-width-active);
+    }
+
+    .content {
+        margin-top: 60px;
+        flex-grow: 1;
+        padding: 10px;
+        margin-left: 0; /* No margin when sidebar is fixed */
+    }
+
+    .toggle-menu {
+        top: 10px;
+        right: 10px;
+        z-index: 15;
+        position: fixed;
+    }
+
+    [data-tooltip]::before {
+        font-size: 14px;
+    }
+
+    .family-tree h1 {
+        font-size: 24px;
+        text-align: center;
+        margin: 10px 0;
+    }
+
+    .card {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    .card-header {
+        font-size: 1em;
+    }
+
+    .card-body {
+        padding-left: 15px;
+    }
+
+    .toggle-menu {
+        display: none; 
+    }
+}
+
+@media (max-width: 480px) {
+    .toggle-menu {
+        display: none; 
+    }
+
+    .sidebar {
+        width: 60px;
+    }
+
+    .sidebar.active {
+        width: 100px;
+    }
+
+    .menu-header {
+        font-size: 14px;
+    }
+
+    .menu-item i {
+        font-size: 16px;
+    }
+
+    .menu-item span {
+        font-size: 12px;
+    }
+
+    .card {
+        padding: 10px;
+    }
+
+    .card-header {
+        font-size: 0.9em;
+    }
+
+    .card-body {
+        padding-left: 10px;
+    }
+
+    [data-tooltip]::before {
+        font-size: 12px;
+    }
+}
