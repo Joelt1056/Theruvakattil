@@ -227,7 +227,7 @@ body {
     font-style: italic;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1200px) {
     .tree {
         padding: 10px;
         gap: 10px;
@@ -254,10 +254,6 @@ body {
         width: 60px;
     }
 
-    .sidebar.active {
-        width: 80px;
-    }
-
     .menu-item span {
         font-size: 12px;
     }
@@ -269,9 +265,15 @@ body {
     .menu-item i {
         font-size: 16px;
     }
+    .toggle-menu {
+        display: none; 
+    }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 850px) {
+    .toggle-menu {
+        display: none; 
+    }
     .card {
         padding: 8px;
         font-size: 10px;
@@ -294,11 +296,7 @@ body {
     }
 
     .sidebar {
-        width: 50px;
-    }
-
-    .sidebar.active {
-        width: 70px;
+        width: 40px;
     }
 
     .menu-item span {
