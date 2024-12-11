@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap");
+
+* {
+margin: 0;
+padding: 0;
+font-family: "Agdasima", sans-serif;
+}
+
+:root {
+    --sidebar-bg: #2f323a;
+    --sidebar-width: 100px;
+    --sidebar-width-active: 150px;
+    --text-color: #fff;
+    --menu-item-color: rgb(188, 186, 186);
+    --menu-item-hover-bg: rgb(117, 109, 109);
+    --menu-item-hover-color: #fff;
+    --menu-header-color: rgb(137, 135, 135);
+    --tooltip-bg: rgba(0, 0, 0, 0.8);
+    --border-color: rgb(218, 147, 147);
+    --content-bg: #f4f4f4;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background-color: var(--content-bg);
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: var(--sidebar-width);
+    color: var(--text-color);
+    padding: 0 20px;
+    background-color: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.5s ease;
+}
+
+.logo, .menu-item{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: justify-content 0.5s ease;
+}
+
+.logo {
+    margin-top: 30px;
+}
+
+.logo i, .menu-item i{
+    font-size: 2rem;
+    transition: 0.5s ease;
+}
+
+.logo span, .menu-item span{
+    margin-left: 10px;
+    display: none;
+    transition: 0.5s ease;
+}
+
+.menu {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.menu-header {
+    color: var(--menu-header-color);
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 16px;
+    transition: 0.5s ease;
+}
+
+.menu-item {
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 3px;
+    color: var(--menu-item-color);
+    transition: all 0.5 ease;
+}
+
+.menu-item:hover, .nav-active{
+    background: var(--menu-item-hover-bg);
+    color: var(--menu-item-hover-color);
+    transition: 0.5s ease;
+}
+
+.menu-item i{
+    font-size: 20px;
+}
+
+.sidebar.active {
+    width: var(--sidebar-width-active);
+}
+
+.sidebar.active .logo, .sidebar.active .menu-item, .sidebar.active{
+    justify-content: flex-start;
+}
+
+.sidebar.active .logo span, .sidebar.active .menu-item span, .sidebar.active .smth span {
+    display: block;
+}
+
+.sidebar.active .menu-header {
+    font-size: 20px;
+    text-align: left;
+}
+
+.toggle-menu {
+    position: absolute;
+    top: 10px;
+    right: -20px;
+    background-color: var(--sidebar-bg);
+    border: 1px solid var(--menu-item-hover-bg);
+    color: var(--text-color);
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+[data-tooltip] {
+    position: relative;
+}
+
+[data-tooltip]::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 120%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: var(--tooltip-bg);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 20px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+[data-tooltip]:after {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent var(--tooltip-bg) transparent transparent;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.sidebar:not(.active) [data-tooltip]:hover::before, .sidebar:not(.active) [data-tooltip]:hover::after {
+    opacity: 1;
+}
+
+.photo-album {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.photo-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.photo-card img {
+    width: 100%;
+    height: auto;
+}
+
+.photo-card .photo-title {
+    padding: 15px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}

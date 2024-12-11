@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theruvakatill Family Tree</title>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+    <link rel="stylesheet" href="photos.css">
+  </head>
+  <body>
+    <aside class="sidebar" id="sidebar">
+      <div class="logo">
+        <i class="bx bx-shield"></i>
+      </div>
+      <nav class="menu">
+        <h1 class="menu-header">Menu</h1>
+        <a href="index.html" class="menu-item nav-active" data-tooltip="Home">
+            <i class="bx bx-home-smile"></i>
+            <span>Home</span>
+        </a>
+        <a href="photo.html" class="menu-item" data-tooltip="Photo Album">
+          <i class="bx bx-image"></i>
+          <span>Photo Album</span>
+        </a>
+        <div class="menu-item" data-tooltip="Search">
+          <i class="bx bx-search"></i>
+          <span>Search</span>
+        </div>
+      </nav>
+      <div class="toggle-menu" id="toggle-button">
+        <i class="bx bxs-right-arrow"></i>
+        <i class="bx bxs-left-arrow"></i>
+      </div>
+    </aside>
+
+
+    <main class="content">
+      <section class="photo-album">
+        <div class="photo-card">
+          <img src="https://aspenhillvillage.bigpic.dev/wp-content/uploads/2020/12/300x300-Placeholder-Image.jpg" alt="Photo 1">
+          <div class="photo-title">Photo 1</div>
+        </div>
+        <div class="photo-card">
+          <img src="https://aspenhillvillage.bigpic.dev/wp-content/uploads/2020/12/300x300-Placeholder-Image.jpg" alt="Photo 2">
+          <div class="photo-title">Photo 2</div>
+        </div>
+        <div class="photo-card">
+          <img src="https://aspenhillvillage.bigpic.dev/wp-content/uploads/2020/12/300x300-Placeholder-Image.jpg" alt="Photo 3">
+          <div class="photo-title">Photo 3</div>
+        </div>
+        <div class="photo-card">
+          <img src="https://aspenhillvillage.bigpic.dev/wp-content/uploads/2020/12/300x300-Placeholder-Image.jpg" alt="Photo 4">
+          <div class="photo-title">Photo 4</div>
+        </div>
+      </section>
+    </main>
+
+    <button class="toggle-menu" onclick="toggleSidebar()">&#9776;</button>
+    <script src="main.js"></script>
+  </body>
+</html>
