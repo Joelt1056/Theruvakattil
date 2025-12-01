@@ -1,19 +1,22 @@
-const toggleButton = document.getElementById("toggle-button");
-const sidebar = document.getElementById("sidebar");
+$(document).ready(function () {
+  var envelope = $("#envelope");
+  var btn_open = $("#open");
+  var btn_reset = $("#reset");
 
-const openIcon = toggleButton.querySelector(".bxs-right-arrow");
-const closeIcon = toggleButton.querySelector(".bxs-left-arrow");
+  envelope.click(function () {
+    open();
+  });
+  btn_open.click(function () {
+    open();
+  });
+  btn_reset.click(function () {
+    close();
+  });
 
-closeIcon.style.display = "none";
-
-toggleButton.addEventListener("click", () => {
-  sidebar.classList.toggle("active");
-
-  if (sidebar.classList.contains("active")) {
-    openIcon.style.display = "none";
-    closeIcon.style.display = "block";
-  } else {
-    openIcon.style.display = "block";
-    closeIcon.style.display = "none";
+  function open() {
+    envelope.addClass("open").removeClass("close");
+  }
+  function close() {
+    envelope.addClass("close").removeClass("open");
   }
 });
