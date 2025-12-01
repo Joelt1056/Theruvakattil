@@ -1,309 +1,266 @@
-@import url("https://fonts.googleapis.com/css2?family=Agdasima:wght@400;700&display=swap");
-
-* {
-    margin: 0;
-    padding: 0;
-    font-family: "Agdasima", sans-serif;
+#envelope {
+  position: relative;
+  width: 280px;
+  height: 180px;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  margin-left: auto;
+  margin-right: auto;
+  top: 150px;
+  background-color: #d9534f; /* Warm romantic red */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
-:root {
-    --sidebar-bg: #2f323a;
-    --sidebar-width: 20px;
-    --sidebar-width-active: 100px;
-    --text-color: #fff;
-    --menu-item-color: rgb(188, 186, 186);
-    --menu-item-hover-bg: rgb(117, 109, 109);
-    --menu-item-hover-color: #fff;
-    --menu-header-color: rgb(137, 135, 135);
-    --tooltip-bg: rgba(0, 0, 0, 0.8);
-    --border-color: rgb(218, 147, 147);
-    --content-bg: #f4f4f4;
+.front {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 3;
 }
 
-body {
-    display: flex;
-    height: 100vh;
-    background-color: var(--content-bg);
+.flap {
+  border-left: 140px solid transparent;
+  border-right: 140px solid transparent;
+  border-bottom: 82px solid transparent;
+  /* a little smaller */
+  border-top: 98px solid #d9534f; /* Same romantic red */
+  /* a little larger */
+  transform-origin: top;
+  pointer-events: none;
 }
 
-.sidebar {
-    position: sticky;
+.pocket {
+  border-left: 140px solid #f5a3a2; /* Soft pinkish red for the pocket */
+  border-right: 140px solid #f5a3a2;
+  border-bottom: 90px solid #ff6f61; /* Lighter romantic red */
+  border-top: 90px solid transparent;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.letter {
+  position: relative;
+  background-color: #fff;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 90%;
+  top: 5%;
+  border-radius: 6px;
+  box-shadow: 0 2px 26px rgba(0, 0, 0, 0.12);
+  font-family: "Dancing Script", cursive;
+}
+
+.letter:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.words {
+  position: absolute;
+  left: 10%;
+  width: 80%;
+  height: 14%;
+  background-color: #ffe6e6; /* Light romantic tone */
+}
+
+.words.line1 {
+  top: 10%;
+  font-size: 0.5rem;
+  width: 20%;
+  height: 7%;
+  font-size: 0.7rem;
+}
+
+.words.line2 {
+  top: 30%;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.words.line3 {
+  top: 50%;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.words.line4 {
+  top: 70%;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.open .flap {
+  transform: rotateX(180deg);
+  transition: transform 0.4s ease, z-index 0.6s;
+  z-index: 1;
+}
+
+.close .flap {
+  transform: rotateX(0deg);
+  transition: transform 0.4s 0.6s ease, z-index 1s;
+  z-index: 5;
+}
+
+.close .letter {
+  transform: translateY(0px);
+  transition: transform 0.4s ease, z-index 1s;
+  z-index: 1;
+}
+
+.open .letter {
+  transform: translateY(-100px);
+  transition: transform 0.4s 0.6s ease, z-index 0.6s;
+  z-index: 2;
+}
+
+.hearts {
+  position: absolute;
+  top: 90px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.heart {
+  position: absolute;
+  bottom: 0;
+  right: 10%;
+  pointer-events: none;
+}
+
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: #e60073; /* Deep romantic pink */
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+  pointer-events: none;
+}
+
+.heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+.close .heart {
+  opacity: 0;
+  -webkit-animation: none;
+  animation: none;
+}
+
+.a1 {
+  left: 20%;
+  transform: scale(0.6);
+  opacity: 1;
+  -webkit-animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+  -moz-animation: slideUp 4s linear 1, sideSway 2s ease-in-out 4 alternate;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+
+.a2 {
+  left: 55%;
+  transform: scale(1);
+  opacity: 1;
+  -webkit-animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+  -moz-animation: slideUp 5s linear 1, sideSway 4s ease-in-out 2 alternate;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+
+.a3 {
+  left: 10%;
+  transform: scale(0.8);
+  opacity: 1;
+  -webkit-animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+  -moz-animation: slideUp 7s linear 1, sideSway 2s ease-in-out 6 alternate;
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+  -webkit-animation-delay: 0.7s;
+  animation-delay: 0.7s;
+}
+
+@-webkit-keyframes slideUp {
+  0% {
     top: 0;
-    left: 0;
-    height: 100vh;
-    width: var(--sidebar-width);
-    color: var(--text-color);
-    padding: 0 20px;
-    background-color: var(--sidebar-bg);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    transition: all 0.5s ease;
+  }
+  100% {
+    top: -600px;
+  }
+}
+@keyframes slideUp {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -600px;
+  }
+}
+@-webkit-keyframes sideSway {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+@keyframes sideSway {
+  0% {
+    margin-left: 0px;
+  }
+  100% {
+    margin-left: 50px;
+  }
+}
+body {
+  background-color: #f0e6f6; /* Soft lavender for a romantic, dreamy feel */
 }
 
-.logo, .menu-item{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: justify-content 0.5s ease;
+.envlope-wrapper {
+  height: 380px;
 }
 
-.logo {
-    margin-top: 30px;
+.reset {
+  text-align: center;
 }
 
-.logo i, .menu-item i{
-    font-size: 2rem;
-    transition: 0.5s ease;
+.reset button {
+  font-weight: 800;
+  font-style: normal;
+  transition: all 0.1s linear;
+  -webkit-appearance: none;
+  background-color: transparent;
+  border: solid 2px #d9534f;
+  border-radius: 4px;
+  color: #d9534f;
+  display: inline-block;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin: 5px;
+  padding: 10px;
+  line-height: 1em;
+  text-decoration: none;
+  min-width: 120px;
+  cursor: pointer;
 }
 
-.logo span, .menu-item span{
-    margin-left: 10px;
-    display: none;
-    transition: 0.5s ease;
-}
-
-.menu {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    justify-content: center;
-}
-
-.menu-header {
-    color: var(--menu-header-color);
-    text-transform: uppercase;
-    text-align: center;
-    font-size: 16px;
-    transition: 0.5s ease;
-}
-
-.menu-item {
-    cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 3px;
-    color: var(--menu-item-color);
-    transition: all 0.5 ease;
-}
-
-.menu-item:hover, .nav-active{
-    background: var(--menu-item-hover-bg);
-    color: var(--menu-item-hover-color);
-    transition: 0.5s ease;
-}
-
-.menu-item i{
-    font-size: 20px;
-}
-
-.sidebar.active {
-    width: var(--sidebar-width-active);
-}
-
-.sidebar.active .logo, .sidebar.active .menu-item, .sidebar.active{
-    justify-content: flex-start;
-}
-
-.sidebar.active .logo span, .sidebar.active .menu-item span, .sidebar.active .smth span {
-    display: block;
-}
-
-.sidebar.active .menu-header {
-    font-size: 20px;
-    text-align: left;
-}
-
-.toggle-menu {
-    position: absolute;
-    top: 10px;
-    right: -15px;
-    background-color: var(--sidebar-bg);
-    border: 1px solid var(--menu-item-hover-bg);
-    color: var(--text-color);
-    padding: 5px 10px;
-    border-radius: 3px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8em; 
-}
-
-
-.content {
-    flex-grow: 1;
-    padding: 20px;
-    overflow-y: auto;
-    margin-left: var(--sidebar-width); /* Ensure content does not overlap with sidebar */
-    transition: margin-left 0.3s ease; /* Smooth transition when sidebar width changes */
-}
-
-.sidebar.active + .content {
-    margin-left: var(--sidebar-width-active); /* Adjust content when sidebar is active */
-}
-
-[data-tooltip] {
-    position: relative;
-}
-
-[data-tooltip]::before {
-    content: attr(data-tooltip);
-    position: absolute;
-    left: 120%;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: var(--tooltip-bg);
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 20px;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-}
-
-[data-tooltip]:after {
-    content: "";
-    position: absolute;
-    left: 100%;
-    top: 50%;
-    transform: translateY(-50%);
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent var(--tooltip-bg) transparent transparent;
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-.sidebar:not(.active) [data-tooltip]:hover::before, .sidebar:not(.active) [data-tooltip]:hover::after {
-    opacity: 1;
-}
-
-.tree {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 20px;
-}
-
-.tree {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 20px;
-}
-
-.card {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    background: #f9f9f9;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin: 10px 0;
-}
-
-.card:hover {
-    background-color: #f0f0f0;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); 
-    transform: translateY(-5px);
-}
-
-.card-header {
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-bottom: 10px;
-}
-
-.card-body {
-    padding-left: 20px;
-}
-
-.deceased {
-    color: #b22222;
-    font-style: italic;
-}
-
-@media (max-width: 1200px) {
-    .tree {
-        padding: 10px;
-        gap: 10px;
-    }
-
-    .card {
-        padding: 10px;
-        font-size: 12px;
-    }
-
-    .card-header {
-        font-size: 1em;
-    }
-
-    .card-body {
-        padding-left: 10px;
-    }
-
-    .deceased {
-        font-size: 0.9em;
-    }
-
-    .sidebar {
-        width: 60px;
-    }
-
-    .menu-item span {
-        font-size: 12px;
-    }
-
-    .menu-header {
-        font-size: 0.8em;
-    }
-
-    .menu-item i {
-        font-size: 16px;
-    }
-    .toggle-menu {
-        display: none; 
-    }
-}
-
-@media (max-width: 850px) {
-    .toggle-menu {
-        display: none; 
-    }
-    .card {
-        padding: 8px;
-        font-size: 10px;
-    }
-
-    .card-header {
-        font-size: 0.9em;
-    }
-
-    .card-body {
-        padding-left: 5px;
-    }
-
-    .tree {
-        gap: 5px;
-    }
-
-    .deceased {
-        font-size: 0.8em;
-    }
-
-    .sidebar {
-        width: 40px;
-    }
-
-    .menu-item span {
-        display: none; 
-    }
-
-    .menu-item i {
-        font-size: 14px;
-    }
+.reset button:hover {
+  background-color: #d9534f;
+  color: #fff;
 }
